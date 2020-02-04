@@ -12,7 +12,16 @@
     "test": "jest",
     "prepublishOnly": "run-s build test"
   },
-  "keywords": [],
+  "keywords": [
+    "phone number",
+    "phonenumber",
+    "phone",
+    "number",
+    "format",
+    "formatting",
+    "formatter",
+    "beautifier"
+  ],
   "author": "alreadyExisted",
   "license": "MIT",
   "repository": {
