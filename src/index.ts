@@ -1,12 +1,17 @@
 import PhoneNumber from 'awesome-phonenumber'
 
 export function beautify(phoneNumberString: string) {
-  const [countryCode, regionCode, ..._phoneNumberArray] = new PhoneNumber(phoneNumberString)
-    .getNumber('rfc3966')
+  const rfcPhoneNumber = new PhoneNumber(phoneNumberString).getNumber('rfc3966')
+
+  if (!rfcPhoneNumber) return ''
+
+  const [countryCode, regionCode, ..._phoneNumberArray] = rfcPhoneNumber
     .slice(4)
     .split('-')
 
-  const phoneNumberCharacters = _phoneNumberArray.join('').split('')
+  const isValid = _phoneNumberArray.length > 0
+
+  const phoneNumberCharacters = isValid ? _phoneNumberArray.join('').split('') : regionCode.split('')
 
   const phoneNumberLength = phoneNumberCharacters.length
   const isOddNumber = phoneNumberLength % 2 !== 0
@@ -26,5 +31,5 @@ export function beautify(phoneNumberString: string) {
     return result + prefix
   }, '')
 
-  return `${countryCode} (${regionCode}) ${phoneNumber}`
+  return isValid ? `${countryCode} (${regionCode}) ${phoneNumber}` : `${countryCode} ${phoneNumber}`
 }
