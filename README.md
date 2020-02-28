@@ -19,6 +19,6 @@ function PhoneNumber({ value }: { value: string }) {
 }
 
 function App() {
-  return <PhoneNumber value="+380997836817"> // +380 (99) 78-36-817
+  return <PhoneNumber value="+380997836811"> // +380 (99) 78-36-811
 }
 ```
